@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
+import 'core/constants/styles.dart';
 import 'features/home/pages/home_page.dart';
 import 'firebase_options.dart';
 
@@ -24,11 +25,13 @@ class PomoApp extends StatelessWidget {
         useMaterial3: true,
         colorSchemeSeed: Colors.blue,
         brightness: Brightness.light,
+        textTheme: TextStyles.lightTheme,
       ),
       // darkTheme: ThemeData(
       //   useMaterial3: true,
       //   colorSchemeSeed: Colors.blue,
       //   brightness: Brightness.dark,
+      //   textTheme: TextStyles.lightTheme,
       // ),
       home: const HomePage(),
     );
