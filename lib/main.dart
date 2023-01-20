@@ -19,10 +19,17 @@ class PomoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Pomo',
-      theme:
-          ThemeData(colorSchemeSeed: Colors.blue, brightness: Brightness.light),
-      darkTheme:
-          ThemeData(colorSchemeSeed: Colors.blue, brightness: Brightness.dark),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.blue,
+        brightness: Brightness.light,
+      ),
+      // darkTheme: ThemeData(
+      //   useMaterial3: true,
+      //   colorSchemeSeed: Colors.blue,
+      //   brightness: Brightness.dark,
+      // ),
       home: const HomePage(),
     );
   }
