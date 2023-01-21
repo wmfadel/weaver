@@ -98,16 +98,15 @@ class PomoCubit extends Cubit<PomoState> {
     _timer = null;
     if (state is FocusPomo) {
       if (_focusPomosCount == settings.pomosCount) {
+        _focusPomosCount = 0;
         _currentProgress = settings.longBreakLength;
         emit(LongBreakPomo(playing: false, progress: _currentProgress));
       } else {
         _currentProgress = settings.shortBreakLength;
         emit(BreakPomo(playing: false, progress: _currentProgress));
       }
-    } else if (state is BreakPomo) {
-      _currentProgress = settings.focusLength;
-      emit(FocusPomo(playing: false, progress: _currentProgress));
     } else {
+      _focusPomosCount++;
       _currentProgress = settings.focusLength;
       emit(FocusPomo(playing: false, progress: _currentProgress));
     }
