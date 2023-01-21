@@ -1,5 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pomo/core/models/settings.dart';
+import 'package:pomo/features/home/controllers/pomo_cubit.dart';
 
 import 'core/constants/styles.dart';
 import 'features/home/pages/home_page.dart';
@@ -33,7 +36,10 @@ class PomoApp extends StatelessWidget {
       //   brightness: Brightness.dark,
       //   textTheme: TextStyles.lightTheme,
       // ),
-      home: const HomePage(),
+      home: BlocProvider<PomoCubit>(
+        create: (context) => PomoCubit(Settings())..startFocusPomo(),
+        child: const HomePage(),
+      ),
     );
   }
 }

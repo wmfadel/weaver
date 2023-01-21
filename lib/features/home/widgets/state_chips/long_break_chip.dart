@@ -11,7 +11,7 @@ class LongBreakChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return const BaseStateChip(
       icon: Images.coffee,
-      label: 'LongBreak',
+      label: 'Long Break',
       color: AppColors.blue900,
     );
   }

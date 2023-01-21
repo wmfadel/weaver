@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pomo/core/constants/images.dart';
 import 'package:pomo/core/widgets/PoImage.dart';
+import 'package:pomo/features/home/controllers/pomo_cubit.dart';
 
 class ControlButtons extends StatelessWidget {
   final Color mainColor;
   final Color secondaryColor;
   final Color iconColor;
-  final bool isPlaying;
 
   const ControlButtons({
     required this.mainColor,
     required this.secondaryColor,
     required this.iconColor,
-    required this.isPlaying,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    final pomoCubit = context.read<PomoCubit>();
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -32,13 +33,17 @@ class ControlButtons extends StatelessWidget {
           onPressed: () {},
         ),
         const SizedBox(width: 16),
-        _ControlButton(
-          icon: isPlaying ? Images.pause : Images.play,
-          color: mainColor,
-          iconColor: iconColor,
-          width: 128,
-          height: 96,
-          onPressed: () {},
+        BlocBuilder<PomoCubit, PomoState>(
+          builder: (context, state) {
+            return _ControlButton(
+              icon: pomoCubit.isPlaying ? Images.pause : Images.play,
+              color: mainColor,
+              iconColor: iconColor,
+              width: 128,
+              height: 96,
+              onPressed: () => pomoCubit.next(),
+            );
+          },
         ),
         const SizedBox(width: 16),
         _ControlButton(
