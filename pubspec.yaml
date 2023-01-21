@@ -41,7 +41,6 @@ dependencies:
   firebase_remote_config: ^3.0.9
   firebase_in_app_messaging: ^0.7.0+10
 
-  stop_watch_timer: ^2.0.0
   flutter_secure_storage: ^7.0.1
   rxdart: ^0.27.7
   flutter_local_notifications: ^13.0.0

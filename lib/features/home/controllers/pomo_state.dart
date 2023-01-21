@@ -3,12 +3,12 @@ part of 'pomo_cubit.dart';
 abstract class PomoState extends Equatable {
   final bool playing;
 
-  final String progress;
+  final int progress;
   final Color color = AppColors.red50;
 
-  PomoState copyWith({bool? playing, String? progress});
+  PomoState copyWith({bool? playing, int? progress});
 
-  const PomoState({this.playing = false, this.progress = '00:00'});
+  const PomoState({this.playing = false, this.progress = 0});
 
   @override
   List<Object> get props => [playing, progress, color];
@@ -21,7 +21,7 @@ class FocusPomo extends PomoState {
   List<Object> get props => [playing, progress, color];
 
   @override
-  PomoState copyWith({bool? playing, String? progress}) {
+  PomoState copyWith({bool? playing, int? progress}) {
     return FocusPomo(
       playing: playing ?? this.playing,
       progress: progress ?? this.progress,
@@ -36,7 +36,7 @@ class BreakPomo extends PomoState {
   const BreakPomo({super.playing, super.progress});
 
   @override
-  PomoState copyWith({bool? playing, String? progress}) {
+  PomoState copyWith({bool? playing, int? progress}) {
     return BreakPomo(
       playing: playing ?? this.playing,
       progress: progress ?? this.progress,
@@ -54,7 +54,7 @@ class LongBreakPomo extends PomoState {
   const LongBreakPomo({super.playing, super.progress});
 
   @override
-  PomoState copyWith({bool? playing, String? progress}) {
+  PomoState copyWith({bool? playing, int? progress}) {
     return LongBreakPomo(
       playing: playing ?? this.playing,
       progress: progress ?? this.progress,
