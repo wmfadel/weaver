@@ -1,61 +1,76 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pomo/core/constants/colors.dart';
 import 'package:pomo/core/constants/images.dart';
 import 'package:pomo/core/widgets/PoImage.dart';
 import 'package:pomo/features/home/controllers/pomo_cubit.dart';
 
 class ControlButtons extends StatelessWidget {
-  final Color mainColor;
-  final Color secondaryColor;
-  final Color iconColor;
-
-  const ControlButtons({
-    required this.mainColor,
-    required this.secondaryColor,
-    required this.iconColor,
-    super.key,
-  });
+  const ControlButtons({super.key});
 
   @override
   Widget build(BuildContext context) {
     final pomoCubit = context.read<PomoCubit>();
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        _ControlButton(
-          icon: Images.more,
-          color: secondaryColor,
-          iconColor: iconColor,
-          width: 80,
-          height: 80,
-          onPressed: () {},
-        ),
-        const SizedBox(width: 16),
-        BlocBuilder<PomoCubit, PomoState>(
-          builder: (context, state) {
-            return _ControlButton(
+    return BlocBuilder<PomoCubit, PomoState>(
+      builder: (context, state) {
+        return Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _ControlButton(
+              icon: Images.more,
+              color: _secondaryColor(state),
+              iconColor: _iconsColor(state),
+              width: 80,
+              height: 80,
+              onPressed: () {},
+            ),
+            const SizedBox(width: 16),
+            _ControlButton(
               icon: pomoCubit.isPlaying ? Images.pause : Images.play,
-              color: mainColor,
-              iconColor: iconColor,
+              color: _primaryColor(state),
+              iconColor: _iconsColor(state),
               width: 128,
               height: 96,
-              onPressed: () => pomoCubit.next(),
-            );
-          },
-        ),
-        const SizedBox(width: 16),
-        _ControlButton(
-          icon: Images.skip,
-          color: secondaryColor,
-          iconColor: iconColor,
-          width: 80,
-          height: 80,
-          onPressed: () {},
-        ),
-      ],
+              onPressed: () => pomoCubit.toggle(),
+            ),
+            const SizedBox(width: 16),
+            _ControlButton(
+              icon: Images.skip,
+              color: _secondaryColor(state),
+              iconColor: _iconsColor(state),
+              width: 80,
+              height: 80,
+              onPressed: () {},
+            ),
+          ],
+        );
+      },
     );
+  }
+
+  Color _primaryColor(PomoState state) {
+    return state is FocusPomo
+        ? AppColors.red500.withOpacity(0.71)
+        : state is BreakPomo
+            ? AppColors.green500.withOpacity(0.71)
+            : AppColors.blue500.withOpacity(0.71);
+  }
+
+  Color _secondaryColor(PomoState state) {
+    return state is FocusPomo
+        ?  AppColors.red100.withOpacity(0.8)
+        : state is BreakPomo
+            ?  AppColors.green100.withOpacity(0.8)
+            :  AppColors.blue100.withOpacity(0.8);
+  }
+  Color _iconsColor(PomoState state) {
+    return state is FocusPomo
+        ?   AppColors.red900
+        : state is BreakPomo
+            ?   AppColors.green900
+            :   AppColors.blue900;
   }
 }
 

@@ -7,7 +7,6 @@ import 'package:pomo/features/home/controllers/pomo_cubit.dart';
 import 'package:pomo/features/home/widgets/control_buttons.dart';
 import 'package:pomo/features/home/widgets/state_chips/chipBuilder.dart';
 
-
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -22,22 +21,29 @@ class HomePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 32),
+                const SizedBox(height: 32, width: double.maxFinite),
                 const ChipBuilder(),
                 const SizedBox(height: 32),
                 Text(
-                  state.progress.toString(),
-                  style: Theme.of(context)
-                      .textTheme
-                      .displayLarge
-                      ?.copyWith(fontSize: 256),
+                  formatMinutes(state.progress),
+                  style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                        fontSize: 256,
+                        color: _textColor(state),
+                        fontWeight:
+                            state.playing ? FontWeight.w700 : FontWeight.w400,
+                      ),
+                ),
+                Text(
+                  formatSeconds(state.progress),
+                  style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                        fontSize: 256,
+                        color: _textColor(state),
+                        fontWeight:
+                            state.playing ? FontWeight.w700 : FontWeight.w400,
+                      ),
                 ),
                 const SizedBox(height: 32),
-                ControlButtons(
-                  mainColor: AppColors.red500.withOpacity(0.71),
-                  secondaryColor: AppColors.red100.withOpacity(0.8),
-                  iconColor: AppColors.red900,
-                ),
+                const ControlButtons(),
                 const SizedBox(height: 32),
               ],
             ),
@@ -45,5 +51,23 @@ class HomePage extends StatelessWidget {
         );
       },
     );
+  }
+
+  Color _textColor(PomoState state) {
+    return state is FocusPomo
+        ? AppColors.red900
+        : state is BreakPomo
+            ? AppColors.green900
+            : AppColors.blue900;
+  }
+
+  String formatMinutes(int time) {
+    final minutes = (time / 60).floor();
+    return '$minutes';
+  }
+
+  String formatSeconds(int time) {
+    final seconds = time % 60;
+    return seconds.toString().padLeft(2, '0');
   }
 }

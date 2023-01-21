@@ -37,7 +37,7 @@ class PomoApp extends StatelessWidget {
       //   textTheme: TextStyles.lightTheme,
       // ),
       home: BlocProvider<PomoCubit>(
-        create: (context) => PomoCubit(Settings())..startFocusPomo(),
+        create: (context) => PomoCubit(Settings()),
         child: const HomePage(),
       ),
     );
