@@ -63,7 +63,7 @@ class HomePage extends StatelessWidget {
 
   String formatMinutes(int time) {
     final minutes = (time / 60).floor();
-    return '$minutes';
+    return minutes.toString().padLeft(2, '0');
   }
 
   String formatSeconds(int time) {

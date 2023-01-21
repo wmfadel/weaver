@@ -42,7 +42,7 @@ class ControlButtons extends StatelessWidget {
               iconColor: _iconsColor(state),
               width: 80,
               height: 80,
-              onPressed: () {},
+              onPressed: () =>pomoCubit.skip(),
             ),
           ],
         );

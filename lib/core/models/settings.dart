@@ -9,9 +9,9 @@ class Settings {
   bool enableSounds;
 
   Settings({
-    this.focusLength = 15 * 60,
+    this.focusLength = 25 * 60,
     this.shortBreakLength = 5 * 60,
-    this.longBreakLength = 10 * 60,
+    this.longBreakLength = 30 * 60,
     this.pomosCount = 4,
     this.autoResumeTimer = false,
     this.enableNotifications = true,

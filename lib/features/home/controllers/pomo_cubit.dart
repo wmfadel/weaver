@@ -82,7 +82,7 @@ class PomoCubit extends Cubit<PomoState> {
       _timer!.cancel();
       emit(state.copyWith(playing: false));
     } else {
-      emit(state.copyWith(playing: true,progress: --_currentProgress));
+      emit(state.copyWith(playing: true, progress: --_currentProgress));
       if (state is FocusPomo) {
         startFocusPomo();
       } else if (state is BreakPomo) {
@@ -93,6 +93,25 @@ class PomoCubit extends Cubit<PomoState> {
     }
   }
 
+  skip() {
+    _timer?.cancel();
+    _timer = null;
+    if (state is FocusPomo) {
+      if (_focusPomosCount == settings.pomosCount) {
+        _currentProgress = settings.longBreakLength;
+        emit(LongBreakPomo(playing: false, progress: _currentProgress));
+      } else {
+        _currentProgress = settings.shortBreakLength;
+        emit(BreakPomo(playing: false, progress: _currentProgress));
+      }
+    } else if (state is BreakPomo) {
+      _currentProgress = settings.focusLength;
+      emit(FocusPomo(playing: false, progress: _currentProgress));
+    } else {
+      _currentProgress = settings.focusLength;
+      emit(FocusPomo(playing: false, progress: _currentProgress));
+    }
+  }
 
   @override
   Future<void> close() {
