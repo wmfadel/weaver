@@ -11,4 +11,5 @@ class Images {
   static const String returnImg = 'assets/svg/return.svg';
   static const String skip = 'assets/svg/skip.svg';
   static const String settings = 'assets/svg/settings.svg';
+  static const String logo = 'assets/svg/logo.svg';
 }
