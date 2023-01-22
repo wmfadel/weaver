@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pomo/core/constants/colors.dart';
 import 'package:pomo/core/constants/images.dart';
+import 'package:pomo/core/utils/side_sheet.dart';
 import 'package:pomo/core/widgets/PoImage.dart';
 import 'package:pomo/features/home/controllers/pomo_cubit.dart';
 
@@ -24,7 +25,10 @@ class ControlButtons extends StatelessWidget {
               iconColor: _iconsColor(state),
               width: 80,
               height: 80,
-              onPressed: () {},
+              onPressed: () {
+                SideSheet.end(
+                    title: 'title', body: Text('body'), context: context);
+              },
             ),
             const SizedBox(width: 16),
             _ControlButton(
@@ -42,7 +46,7 @@ class ControlButtons extends StatelessWidget {
               iconColor: _iconsColor(state),
               width: 80,
               height: 80,
-              onPressed: () =>pomoCubit.skip(),
+              onPressed: () => pomoCubit.skip(),
             ),
           ],
         );
@@ -60,17 +64,18 @@ class ControlButtons extends StatelessWidget {
 
   Color _secondaryColor(PomoState state) {
     return state is FocusPomo
-        ?  AppColors.red100.withOpacity(0.8)
+        ? AppColors.red100.withOpacity(0.8)
         : state is BreakPomo
-            ?  AppColors.green100.withOpacity(0.8)
-            :  AppColors.blue100.withOpacity(0.8);
+            ? AppColors.green100.withOpacity(0.8)
+            : AppColors.blue100.withOpacity(0.8);
   }
+
   Color _iconsColor(PomoState state) {
     return state is FocusPomo
-        ?   AppColors.red900
+        ? AppColors.red900
         : state is BreakPomo
-            ?   AppColors.green900
-            :   AppColors.blue900;
+            ? AppColors.green900
+            : AppColors.blue900;
   }
 }
 
