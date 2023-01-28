@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pomo/core/models/settings.dart';
+import 'package:pomo/features/settings/controllers/settings_cubit.dart';
 import 'package:pomo/features/splash/controllers/splash_cubit.dart';
 import 'package:pomo/features/splash/pages/splash_page.dart';
 
@@ -31,6 +32,9 @@ class _PomoAppState extends State<PomoApp> {
         BlocProvider<SplashCubit>(
           create: (context) =>
               SplashCubit(GetIt.instance.get<Settings>())..loadSettings(),
+        ),
+        BlocProvider<SettingsCubit>(
+          create: (context) => SettingsCubit(GetIt.instance.get<Settings>()),
         ),
         BlocProvider<PomoCubit>(
           create: (context) => PomoCubit(GetIt.instance.get<Settings>()),

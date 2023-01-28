@@ -1,13 +1,15 @@
-class Settings {
-  int focusLength;
-  int shortBreakLength;
-  int longBreakLength;
-  int pomosCount;
-  bool autoResumeTimer;
-  bool enableNotifications;
-  bool enableSounds;
+import 'package:equatable/equatable.dart';
 
-  Settings({
+class Settings extends Equatable {
+  final int focusLength;
+  final int shortBreakLength;
+  final int longBreakLength;
+  final int pomosCount;
+  final bool autoResumeTimer;
+  final bool enableNotifications;
+  final bool enableSounds;
+
+  const Settings({
     this.focusLength = 25 * 60,
     this.shortBreakLength = 5 * 60,
     this.longBreakLength = 30 * 60,
@@ -41,4 +43,34 @@ class Settings {
     };
   }
 
+  Settings copyWith({
+    int? focusLength,
+    int? shortBreakLength,
+    int? longBreakLength,
+    int? pomosCount,
+    bool? autoResumeTimer,
+    bool? enableNotifications,
+    bool? enableSounds,
+  }) {
+    return Settings(
+      focusLength: focusLength ?? this.focusLength,
+      shortBreakLength: shortBreakLength ?? this.shortBreakLength,
+      longBreakLength: longBreakLength ?? this.longBreakLength,
+      pomosCount: pomosCount ?? this.pomosCount,
+      autoResumeTimer: autoResumeTimer ?? this.autoResumeTimer,
+      enableNotifications: enableNotifications ?? this.enableNotifications,
+      enableSounds: enableSounds ?? this.enableSounds,
+    );
+  }
+
+  @override
+  List<Object?> get props => [
+        focusLength,
+        shortBreakLength,
+        longBreakLength,
+        pomosCount,
+        autoResumeTimer,
+        enableNotifications,
+        enableSounds,
+      ];
 }

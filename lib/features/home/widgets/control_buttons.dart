@@ -5,6 +5,7 @@ import 'package:pomo/core/constants/images.dart';
 import 'package:pomo/core/utils/side_sheet.dart';
 import 'package:pomo/core/widgets/PoImage.dart';
 import 'package:pomo/features/home/controllers/pomo_cubit.dart';
+import 'package:pomo/features/settings/pages/settings_page.dart';
 
 class ControlButtons extends StatelessWidget {
   const ControlButtons({super.key});
@@ -28,7 +29,7 @@ class ControlButtons extends StatelessWidget {
               onPressed: () {
                 SideSheet.end(
                   title: 'Settings',
-                  body: const Text('body'),
+                  body: const SettingsPage(),
                   context: context,
                   backgroundColor: pomoCubit.backgroundColor,
                   textColor: pomoCubit.textColor,
