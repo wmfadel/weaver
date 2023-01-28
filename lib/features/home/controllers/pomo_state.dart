@@ -4,21 +4,20 @@ abstract class PomoState extends Equatable {
   final bool playing;
 
   final int progress;
-  final Color color = AppColors.red50;
 
   PomoState copyWith({bool? playing, int? progress});
 
   const PomoState({this.playing = false, this.progress = 0});
 
   @override
-  List<Object> get props => [playing, progress, color];
+  List<Object> get props => [playing, progress];
 }
 
 class FocusPomo extends PomoState {
   const FocusPomo({super.playing, super.progress});
 
   @override
-  List<Object> get props => [playing, progress, color];
+  List<Object> get props => [playing, progress];
 
   @override
   PomoState copyWith({bool? playing, int? progress}) {
@@ -30,9 +29,6 @@ class FocusPomo extends PomoState {
 }
 
 class BreakPomo extends PomoState {
-  @override
-  final Color color = AppColors.green50;
-
   const BreakPomo({super.playing, super.progress});
 
   @override
@@ -44,13 +40,10 @@ class BreakPomo extends PomoState {
   }
 
   @override
-  List<Object> get props => [playing, progress, color];
+  List<Object> get props => [playing, progress];
 }
 
 class LongBreakPomo extends PomoState {
-  @override
-  final Color color = AppColors.blue50;
-
   const LongBreakPomo({super.playing, super.progress});
 
   @override
@@ -62,5 +55,5 @@ class LongBreakPomo extends PomoState {
   }
 
   @override
-  List<Object> get props => [playing, progress, color];
+  List<Object> get props => [playing, progress];
 }

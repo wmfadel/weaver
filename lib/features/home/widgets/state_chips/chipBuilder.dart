@@ -13,11 +13,15 @@ class ChipBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PomoCubit, PomoState>(builder: (context, state) {
-      return state is FocusPomo
-          ? const FocusChip()
-          : state is BreakPomo
-              ? const BreakChip()
-              : const LongBreakChip();
+      return AnimatedSwitcher(
+          duration: const Duration(milliseconds: 300),
+          switchInCurve: Curves.easeInCirc,
+          switchOutCurve: Curves.easeOut,
+          child: state is FocusPomo
+              ? const FocusChip()
+              : state is BreakPomo
+                  ? const BreakChip()
+                  : const LongBreakChip());
     });
   }
 }

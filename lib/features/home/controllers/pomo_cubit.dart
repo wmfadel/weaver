@@ -112,6 +112,22 @@ class PomoCubit extends Cubit<PomoState> {
     }
   }
 
+  Color get textColor {
+    return state is FocusPomo
+        ? AppColors.red900
+        : state is BreakPomo
+            ? AppColors.green900
+            : AppColors.blue900;
+  }
+
+  Color get backgroundColor {
+    return state is FocusPomo
+        ? AppColors.red50
+        : state is BreakPomo
+            ? AppColors.green50
+            : AppColors.blue50;
+  }
+
   @override
   Future<void> close() {
     _timer?.cancel();

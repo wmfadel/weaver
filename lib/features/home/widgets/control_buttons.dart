@@ -27,7 +27,12 @@ class ControlButtons extends StatelessWidget {
               height: 80,
               onPressed: () {
                 SideSheet.end(
-                    title: 'title', body: const Text('body'), context: context);
+                  title: 'Settings',
+                  body: const Text('body'),
+                  context: context,
+                  backgroundColor: pomoCubit.backgroundColor,
+                  textColor: pomoCubit.textColor,
+                );
               },
             ),
             const SizedBox(width: 16),
@@ -102,7 +107,8 @@ class _ControlButton extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: onPressed,
-        child: Container(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
           width: width,
           height: height,
           decoration: BoxDecoration(
