@@ -18,34 +18,40 @@ class HomePage extends StatelessWidget {
         return Scaffold(
           backgroundColor: state.color,
           body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(height: 32, width: double.maxFinite),
-                const ChipBuilder(),
-                const SizedBox(height: 32),
-                Text(
-                  formatMinutes(state.progress),
-                  style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                        fontSize: 256,
-                        color: _textColor(state),
-                        fontWeight:
-                            state.playing ? FontWeight.w700 : FontWeight.w400,
-                      ),
-                ),
-                Text(
-                  formatSeconds(state.progress),
-                  style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                        fontSize: 256,
-                        color: _textColor(state),
-                        fontWeight:
-                            state.playing ? FontWeight.w700 : FontWeight.w400,
-                      ),
-                ),
-                const SizedBox(height: 32),
-                const ControlButtons(),
-                const SizedBox(height: 32),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 32, width: double.maxFinite),
+                  const ChipBuilder(),
+                  const SizedBox(height: 32),
+                  FittedBox(
+                    child: Text(
+                      formatMinutes(state.progress),
+                      style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                            fontSize: 256,
+                            color: _textColor(state),
+                            fontWeight:
+                                state.playing ? FontWeight.w700 : FontWeight.w400,
+                          ),
+                    ),
+                  ),
+                  FittedBox(
+                    child: Text(
+                      formatSeconds(state.progress),
+                      style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                            fontSize: 256,
+                            color: _textColor(state),
+                            fontWeight:
+                                state.playing ? FontWeight.w700 : FontWeight.w400,
+                          ),
+                    ),
+                  ),
+                  const SizedBox(height: 32),
+                  const ControlButtons(),
+                  const SizedBox(height: 32),
+                ],
+              ),
             ),
           ),
         );

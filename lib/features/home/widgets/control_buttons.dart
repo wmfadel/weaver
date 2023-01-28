@@ -27,7 +27,7 @@ class ControlButtons extends StatelessWidget {
               height: 80,
               onPressed: () {
                 SideSheet.end(
-                    title: 'title', body: Text('body'), context: context);
+                    title: 'title', body: const Text('body'), context: context);
               },
             ),
             const SizedBox(width: 16),

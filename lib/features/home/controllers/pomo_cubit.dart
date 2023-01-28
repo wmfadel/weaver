@@ -9,7 +9,7 @@ import 'package:pomo/core/models/settings.dart';
 part 'pomo_state.dart';
 
 class PomoCubit extends Cubit<PomoState> {
-  final Settings settings;
+  Settings settings;
   int _focusPomosCount = 0;
   Timer? _timer;
   late int _currentProgress;

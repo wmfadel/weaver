@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pomo/core/constants/colors.dart';
 import 'package:pomo/core/constants/images.dart';
 import 'package:pomo/core/widgets/PoImage.dart';
-import 'package:pomo/features/home/controllers/pomo_cubit.dart';
 import 'package:pomo/features/home/pages/home_page.dart';
 import 'package:pomo/features/splash/controllers/splash_cubit.dart';
 
@@ -21,12 +20,7 @@ class _SplashPageState extends State<SplashPage> {
       listener: (context, state) {
         if (state is SplashCompleted) {
           Navigator.of(context).pushReplacement(
-            MaterialPageRoute(
-              builder: (context) => BlocProvider<PomoCubit>(
-                create: (context) => PomoCubit(state.settings),
-                child: const HomePage(),
-              ),
-            ),
+            MaterialPageRoute(builder: (context) => const HomePage()),
           );
         }
       },
@@ -38,13 +32,13 @@ class _SplashPageState extends State<SplashPage> {
             children: [
               Text(
                 'Pomo',
-                style: Theme.of(context)
-                    .textTheme
-                    .displayLarge
-                    ?.copyWith(color: AppColors.red900),
+                style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                      color: AppColors.red900,
+                      fontWeight: FontWeight.w800,
+                    ),
               ),
               const SizedBox(height: 16),
-              const PoImage(Images.logo),
+              const PoImage(Images.logo, width: 128, height: 128),
               const SizedBox(height: 32),
               const CircularProgressIndicator(color: AppColors.red900),
             ],
