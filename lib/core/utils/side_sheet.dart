@@ -33,7 +33,7 @@ class SideSheet {
         title: title,
         body: body,
         width: width,
-        startSide: true ,
+        startSide: true,
         context: context,
         barrierLabel: barrierLabel,
         backgroundColor: backgroundColor,
@@ -74,7 +74,8 @@ class SideSheet {
                   height: double.infinity,
                   padding: const EdgeInsets.only(
                       top: 35, bottom: 32, right: 24, left: 24),
-                  width: width ?? MediaQuery.of(context).size.width * 0.38,
+                  width: width ?? MediaQuery.of(context).size.width * 0.42,
+                  constraints: const BoxConstraints(minWidth: 320),
                   decoration: BoxDecoration(
                       color: backgroundColor,
                       borderRadius: BorderRadiusDirectional.only(

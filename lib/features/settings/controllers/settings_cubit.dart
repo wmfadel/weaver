@@ -5,11 +5,9 @@ import 'package:pomo/core/models/settings.dart';
 part 'settings_state.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
-  SettingsCubit(Settings settings)
-      : _settings = settings,
-        super(SettingsInitial());
+  SettingsCubit(this.settings) : super(SettingsInitial());
 
-  Settings _settings;
+  Settings settings;
 
   /// Takes any value available in the [Settings] class and updates it.
   void updateSettings({
@@ -21,7 +19,7 @@ class SettingsCubit extends Cubit<SettingsState> {
     bool? enableNotifications,
     bool? enableSounds,
   }) {
-    _settings = _settings.copyWith(
+    settings = settings.copyWith(
       focusLength: focusLength,
       shortBreakLength: shortBreakLength,
       longBreakLength: longBreakLength,
@@ -30,6 +28,6 @@ class SettingsCubit extends Cubit<SettingsState> {
       enableNotifications: enableNotifications,
       enableSounds: enableSounds,
     );
-    emit(SettingsUpdate(_settings));
+    emit(SettingsUpdate(settings));
   }
 }

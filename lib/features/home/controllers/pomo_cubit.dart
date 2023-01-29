@@ -9,14 +9,24 @@ import 'package:pomo/core/models/settings.dart';
 part 'pomo_state.dart';
 
 class PomoCubit extends Cubit<PomoState> {
-  Settings settings;
+  Settings _settings;
   int _focusPomosCount = 0;
   Timer? _timer;
   late int _currentProgress;
 
-  PomoCubit(this.settings) : super(const FocusPomo()) {
+  PomoCubit(Settings settings)
+      : _settings = settings,
+        super(const FocusPomo()) {
     _currentProgress = settings.focusLength;
     emit(FocusPomo(playing: false, progress: _currentProgress));
+  }
+
+  set settings(Settings settings) {
+    _settings = settings;
+    if (!state.playing) {
+      _currentProgress = settings.focusLength;
+      emit(FocusPomo(playing: false, progress: _currentProgress));
+    }
   }
 
   startFocusPomo() {
@@ -27,13 +37,13 @@ class PomoCubit extends Cubit<PomoState> {
         if (_currentProgress == 0) {
           _timer?.cancel();
           _timer = null;
-          _currentProgress = settings.shortBreakLength;
-          if (_focusPomosCount == settings.pomosCount) {
+          _currentProgress = _settings.shortBreakLength;
+          if (_focusPomosCount == _settings.pomosCount) {
             _focusPomosCount = 0;
-            _currentProgress = settings.longBreakLength;
+            _currentProgress = _settings.longBreakLength;
             emit(LongBreakPomo(playing: false, progress: _currentProgress));
           } else {
-            _currentProgress = settings.shortBreakLength;
+            _currentProgress = _settings.shortBreakLength;
             emit(BreakPomo(playing: false, progress: _currentProgress));
           }
         } else {
@@ -50,7 +60,7 @@ class PomoCubit extends Cubit<PomoState> {
         if (_currentProgress == 0) {
           _timer?.cancel();
           _timer = null;
-          _currentProgress = settings.focusLength;
+          _currentProgress = _settings.focusLength;
           emit(FocusPomo(playing: false, progress: _currentProgress));
         } else {
           emit(BreakPomo(playing: true, progress: --_currentProgress));
@@ -66,7 +76,7 @@ class PomoCubit extends Cubit<PomoState> {
         if (_currentProgress == 0) {
           _timer?.cancel();
           _timer = null;
-          _currentProgress = settings.focusLength;
+          _currentProgress = _settings.focusLength;
           emit(FocusPomo(playing: false, progress: _currentProgress));
         } else {
           emit(LongBreakPomo(playing: true, progress: --_currentProgress));
@@ -97,17 +107,17 @@ class PomoCubit extends Cubit<PomoState> {
     _timer?.cancel();
     _timer = null;
     if (state is FocusPomo) {
-      if (_focusPomosCount == settings.pomosCount) {
+      if (_focusPomosCount == _settings.pomosCount) {
         _focusPomosCount = 0;
-        _currentProgress = settings.longBreakLength;
+        _currentProgress = _settings.longBreakLength;
         emit(LongBreakPomo(playing: false, progress: _currentProgress));
       } else {
-        _currentProgress = settings.shortBreakLength;
+        _currentProgress = _settings.shortBreakLength;
         emit(BreakPomo(playing: false, progress: _currentProgress));
       }
     } else {
       _focusPomosCount++;
-      _currentProgress = settings.focusLength;
+      _currentProgress = _settings.focusLength;
       emit(FocusPomo(playing: false, progress: _currentProgress));
     }
   }
