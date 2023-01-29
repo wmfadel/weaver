@@ -14,7 +14,7 @@ class SettingsPage extends StatelessWidget {
     final pomoCubit = context.watch<PomoCubit>();
     final settingsCubit = context.watch<SettingsCubit>();
     return Scaffold(
-      backgroundColor: pomoCubit.backgroundColor,
+      backgroundColor: Colors.transparent,
       body: BlocListener<SettingsCubit, SettingsState>(
         listener: (context, state) {
           if (state is SettingsUpdate) {
