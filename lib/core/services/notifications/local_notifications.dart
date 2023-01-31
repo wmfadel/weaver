@@ -26,6 +26,7 @@ class NotificationsHelper {
     final initializationSettings = InitializationSettings(
       android: initializationSettingsAndroid,
       iOS: initializationSettingsDarwin,
+      macOS: initializationSettingsDarwin,
     );
 
     flutterLocalNotificationsPlugin.initialize(
@@ -95,6 +96,7 @@ class NotificationsHelper {
     const NotificationDetails platformChannelSpecifics = NotificationDetails(
       android: androidPlatformChannelSpecifics,
       iOS: iOSPlatformChannelSpecifics,
+      macOS: iOSPlatformChannelSpecifics,
     );
     await flutterLocalNotificationsPlugin.zonedSchedule(
       id ?? 0,
@@ -126,8 +128,10 @@ class NotificationsHelper {
     );
     var iOSPlatformChannelSpecifics = const DarwinNotificationDetails();
     var platformChannelSpecifics = NotificationDetails(
-        android: androidPlatformChannelSpecifics,
-        iOS: iOSPlatformChannelSpecifics);
+      android: androidPlatformChannelSpecifics,
+      iOS: iOSPlatformChannelSpecifics,
+      macOS: iOSPlatformChannelSpecifics,
+    );
     await flutterLocalNotificationsPlugin.periodicallyShow(
       id ?? 0,
       title,
