@@ -57,8 +57,6 @@ dependencies:
     git:
       url: https://github.com/wmfadel/fall_dialogs.git
       ref: main
-  authentication:
-    path: ./packages/authentication
 
 dev_dependencies:
   flutter_test:
