@@ -48,6 +48,7 @@ class NotificationsHelper {
     String? body,
     String? icon,
     String? payload,
+    String? sound,
   }) async {
     var androidPlatformChannelSpecifics = const AndroidNotificationDetails(
       AppStrings.notificationsChannelId,
@@ -59,8 +60,10 @@ class NotificationsHelper {
       playSound: true,
       ticker: 'ticker',
     );
-    const iOSPlatformChannelSpecifics =
-        DarwinNotificationDetails(presentSound: true);
+    final iOSPlatformChannelSpecifics = DarwinNotificationDetails(
+      presentSound: true,
+      sound: sound,
+    );
     var platformChannelSpecifics = NotificationDetails(
       android: androidPlatformChannelSpecifics,
       iOS: iOSPlatformChannelSpecifics,
@@ -92,7 +95,8 @@ class NotificationsHelper {
       AppStrings.notificationsChannelName,
       channelDescription: AppStrings.notificationsChannelDescription,
     );
-    const iOSPlatformChannelSpecifics = DarwinNotificationDetails();
+    const iOSPlatformChannelSpecifics =
+        DarwinNotificationDetails(presentSound: true);
     const NotificationDetails platformChannelSpecifics = NotificationDetails(
       android: androidPlatformChannelSpecifics,
       iOS: iOSPlatformChannelSpecifics,
@@ -126,7 +130,8 @@ class NotificationsHelper {
       AppStrings.notificationsChannelName,
       channelDescription: AppStrings.notificationsChannelDescription,
     );
-    var iOSPlatformChannelSpecifics = const DarwinNotificationDetails();
+    var iOSPlatformChannelSpecifics =
+        const DarwinNotificationDetails(presentSound: true);
     var platformChannelSpecifics = NotificationDetails(
       android: androidPlatformChannelSpecifics,
       iOS: iOSPlatformChannelSpecifics,

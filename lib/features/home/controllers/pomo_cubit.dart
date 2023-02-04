@@ -5,6 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:pomo/core/constants/colors.dart';
 import 'package:pomo/core/models/settings.dart';
+import 'package:pomo/core/models/timer_states.dart';
 
 part 'pomo_state.dart';
 
@@ -18,14 +19,16 @@ class PomoCubit extends Cubit<PomoState> {
       : _settings = settings,
         super(const FocusPomo()) {
     _currentProgress = settings.focusLength;
-    emit(FocusPomo(playing: false, progress: _currentProgress));
+    emit(FocusPomo(
+        playing: false, progress: _currentProgress, stateAfterSkip: false));
   }
 
   set settings(Settings settings) {
     _settings = settings;
     if (!state.playing) {
       _currentProgress = settings.focusLength;
-      emit(FocusPomo(playing: false, progress: _currentProgress));
+      emit(FocusPomo(
+          playing: false, progress: _currentProgress, stateAfterSkip: false));
     }
   }
 
@@ -41,13 +44,25 @@ class PomoCubit extends Cubit<PomoState> {
           if (_focusPomosCount == _settings.pomosCount) {
             _focusPomosCount = 0;
             _currentProgress = _settings.longBreakLength;
-            emit(LongBreakPomo(playing: false, progress: _currentProgress));
+            emit(LongBreakPomo(
+                playing: false,
+                progress: _currentProgress,
+                previousState: _previousState,
+                stateAfterSkip: false));
           } else {
             _currentProgress = _settings.shortBreakLength;
-            emit(BreakPomo(playing: false, progress: _currentProgress));
+            emit(BreakPomo(
+                playing: false,
+                progress: _currentProgress,
+                previousState: _previousState,
+                stateAfterSkip: false));
           }
         } else {
-          emit(FocusPomo(playing: true, progress: --_currentProgress));
+          emit(FocusPomo(
+              playing: true,
+              progress: --_currentProgress,
+              previousState: _previousState,
+              stateAfterSkip: false));
         }
       },
     );
@@ -61,9 +76,17 @@ class PomoCubit extends Cubit<PomoState> {
           _timer?.cancel();
           _timer = null;
           _currentProgress = _settings.focusLength;
-          emit(FocusPomo(playing: false, progress: _currentProgress));
+          emit(FocusPomo(
+              playing: false,
+              progress: _currentProgress,
+              previousState: _previousState,
+              stateAfterSkip: false));
         } else {
-          emit(BreakPomo(playing: true, progress: --_currentProgress));
+          emit(BreakPomo(
+              playing: true,
+              progress: --_currentProgress,
+              previousState: _previousState,
+              stateAfterSkip: false));
         }
       },
     );
@@ -77,9 +100,17 @@ class PomoCubit extends Cubit<PomoState> {
           _timer?.cancel();
           _timer = null;
           _currentProgress = _settings.focusLength;
-          emit(FocusPomo(playing: false, progress: _currentProgress));
+          emit(FocusPomo(
+              playing: false,
+              progress: _currentProgress,
+              previousState: _previousState,
+              stateAfterSkip: false));
         } else {
-          emit(LongBreakPomo(playing: true, progress: --_currentProgress));
+          emit(LongBreakPomo(
+              playing: true,
+              progress: --_currentProgress,
+              previousState: _previousState,
+              stateAfterSkip: false));
         }
       },
     );
@@ -90,9 +121,18 @@ class PomoCubit extends Cubit<PomoState> {
   toggle() {
     if (isPlaying) {
       _timer!.cancel();
-      emit(state.copyWith(playing: false));
+      emit(state.copyWith(
+          playing: false,
+          progress: _currentProgress,
+          previousState: TimerStates.idle,
+          stateAfterSkip: false));
     } else {
-      emit(state.copyWith(playing: true, progress: --_currentProgress));
+      emit(state.copyWith(
+        playing: true,
+        progress: --_currentProgress,
+        previousState: TimerStates.idle,
+        stateAfterSkip: false,
+      ));
       if (state is FocusPomo) {
         startFocusPomo();
       } else if (state is BreakPomo) {
@@ -110,15 +150,27 @@ class PomoCubit extends Cubit<PomoState> {
       if (_focusPomosCount == _settings.pomosCount) {
         _focusPomosCount = 0;
         _currentProgress = _settings.longBreakLength;
-        emit(LongBreakPomo(playing: false, progress: _currentProgress));
+        emit(LongBreakPomo(
+            playing: false,
+            progress: _currentProgress,
+            previousState: _previousState,
+            stateAfterSkip: true));
       } else {
         _currentProgress = _settings.shortBreakLength;
-        emit(BreakPomo(playing: false, progress: _currentProgress));
+        emit(BreakPomo(
+            playing: false,
+            progress: _currentProgress,
+            previousState: _previousState,
+            stateAfterSkip: true));
       }
     } else {
       _focusPomosCount++;
       _currentProgress = _settings.focusLength;
-      emit(FocusPomo(playing: false, progress: _currentProgress));
+      emit(FocusPomo(
+          playing: false,
+          progress: _currentProgress,
+          previousState: _previousState,
+          stateAfterSkip: true));
     }
   }
 
@@ -136,6 +188,14 @@ class PomoCubit extends Cubit<PomoState> {
         : state is BreakPomo
             ? AppColors.green50
             : AppColors.blue50;
+  }
+
+  TimerStates get _previousState {
+    return state is FocusPomo
+        ? TimerStates.focus
+        : state is BreakPomo
+            ? TimerStates.shortBreak
+            : TimerStates.longBreak;
   }
 
   @override
