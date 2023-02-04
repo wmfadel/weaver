@@ -1,16 +1,7 @@
 # pomo
 
-A new Flutter project.
+Flutter project for managing pomodoros for work and study, built mainly for macOS and web without much consideration for responsiveness!
 
-## Getting Started
+Original Design on [Figma](https://www.figma.com/community/file/1112830528857083939)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img width="1167" alt="Screenshot 2023-02-04 at 3 46 18 PM" src="https://user-images.githubusercontent.com/32733023/216771053-b12bd2fe-fd3c-4233-9347-a51c9a7719fa.png">
