@@ -1,7 +1,8 @@
-import 'dart:developer';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pomo/core/services/local_notifications.dart';
 import 'package:pomo/features/home/controllers/pomo_cubit.dart';
 import 'package:pomo/features/home/widgets/control_buttons.dart';
 import 'package:pomo/features/home/widgets/counter_text.dart';
@@ -13,16 +14,25 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pomoCubit = context.read<PomoCubit>();
-    return BlocBuilder<PomoCubit, PomoState>(
+    return BlocConsumer<PomoCubit, PomoState>(
+      listener: (context, state) {
+        if (state.progress == 0) {
+          final String description =
+              state is FocusPomo ? 'Break Time' : 'Back to Work';
+          NotificationsHelper().showNotification(
+              id: Random(DateTime.now().microsecondsSinceEpoch).nextInt(1000),
+              title: 'Time is up!',
+              body: description);
+        }
+      },
       builder: (context, state) {
-        log(state.toString());
         return Scaffold(
           backgroundColor: pomoCubit.backgroundColor,
-          body: Center(
+          body: const Center(
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   SizedBox(height: 32, width: double.maxFinite),
                   ChipBuilder(),
                   CounterText(),
