@@ -10,10 +10,10 @@ class Settings extends Equatable {
   final bool enableSounds;
 
   const Settings({
-    this.focusLength = 25 * 60,
+    this.focusLength = 20 * 60,
     this.shortBreakLength = 5 * 60,
     this.longBreakLength = 30 * 60,
-    this.pomosCount = 4,
+    this.pomosCount = 3,
     this.autoResumeTimer = false,
     this.enableNotifications = true,
     this.enableSounds = false,

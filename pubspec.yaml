@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.0-122.0.dev <4.0.0'
+  sdk: '>=2.19.4 <4.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -35,22 +35,14 @@ dependencies:
   bloc: ^8.1.0
   equatable: ^2.0.5
   firebase_core: ^2.4.1
-  firebase_messaging: ^14.2.1
-  firebase_analytics: ^10.1.0
   firebase_crashlytics: ^3.0.9
-  firebase_remote_config: ^3.0.9
-  firebase_dynamic_links: ^5.0.11
 
-
-  firebase_in_app_messaging: ^0.7.0+10
-
-  flutter_secure_storage: ^7.0.1
+  flutter_secure_storage: ^9.0.0
   rxdart: ^0.27.7
-  logger: ^1.1.0
-  flutter_local_notifications: ^13.0.0
+  logger: ^2.0.2+1
+  flutter_local_notifications: ^16.2.0
   flutter_animate: ^2.0.1
-  google_fonts: ^3.0.1
-  flutter_svg: ^1.1.6
+  flutter_svg: ^2.0.9
   cached_network_image: ^3.2.3
   get_it: ^7.2.0
   fall_dialogs:
@@ -67,8 +59,8 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
-  flutter_launcher_icons: ^0.11.0
+  flutter_lints: ^3.0.1
+  flutter_launcher_icons: ^0.13.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

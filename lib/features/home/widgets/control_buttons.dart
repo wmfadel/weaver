@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pomo/core/constants/colors.dart';
@@ -27,13 +29,30 @@ class ControlButtons extends StatelessWidget {
               width: 80,
               height: 80,
               onPressed: () {
-                SideSheet.end(
-                  title: 'Settings',
-                  body: const SettingsPage(),
-                  context: context,
-                  backgroundColor: pomoCubit.backgroundColor,
-                  textColor: pomoCubit.textColor,
-                );
+                if (Platform.isAndroid) {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) =>  Scaffold(
+                        appBar: AppBar(),
+                        body: const Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 64,
+                          ),
+                          child: SettingsPage(),
+                        ),
+                      ),
+                    ),
+                  );
+                } else {
+                  SideSheet.end(
+                    title: 'Settings',
+                    body: const SettingsPage(),
+                    context: context,
+                    backgroundColor: pomoCubit.backgroundColor,
+                    textColor: pomoCubit.textColor,
+                  );
+                }
               },
             ),
             const SizedBox(width: 16),

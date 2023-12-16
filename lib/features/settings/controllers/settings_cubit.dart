@@ -1,6 +1,11 @@
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:pomo/core/constants/strings.dart';
 import 'package:pomo/core/models/settings.dart';
+import 'package:pomo/core/utils/logger.dart';
 
 part 'settings_state.dart';
 
@@ -28,6 +33,16 @@ class SettingsCubit extends Cubit<SettingsState> {
       enableNotifications: enableNotifications,
       enableSounds: enableSounds,
     );
+    _persistSettings(settings);
     emit(SettingsUpdate(settings));
+  }
+
+  _persistSettings(Settings settings)async{
+    try{
+      const storage = FlutterSecureStorage();
+      storage.write(key: AppStrings.settingsKey, value: jsonEncode(settings.toJson()));
+    }catch(e){
+      AppLog.e("failed to update settings $e");
+    }
   }
 }

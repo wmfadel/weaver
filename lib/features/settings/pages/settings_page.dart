@@ -7,7 +7,7 @@ import 'package:pomo/features/settings/controllers/settings_cubit.dart';
 import 'package:pomo/features/settings/widgets/counter_tile.dart';
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({Key? key}) : super(key: key);
+  const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
