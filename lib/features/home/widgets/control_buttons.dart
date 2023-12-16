@@ -7,6 +7,7 @@ import 'package:pomo/core/constants/images.dart';
 import 'package:pomo/core/utils/side_sheet.dart';
 import 'package:pomo/core/widgets/PoImage.dart';
 import 'package:pomo/features/home/controllers/pomo_cubit.dart';
+import 'package:pomo/features/settings/controllers/settings_cubit.dart';
 import 'package:pomo/features/settings/pages/settings_page.dart';
 
 class ControlButtons extends StatelessWidget {
@@ -29,17 +30,22 @@ class ControlButtons extends StatelessWidget {
               width: 80,
               height: 80,
               onPressed: () {
+                final SettingsCubit cubit = SettingsCubit(pomoCubit.settings);
+                final settingsView = BlocProvider(
+                  create: (_) => cubit,
+                  child: const SettingsPage(),
+                );
                 if (Platform.isAndroid) {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (_) =>  Scaffold(
+                      builder: (_) => Scaffold(
                         appBar: AppBar(),
-                        body: const Padding(
-                          padding: EdgeInsets.symmetric(
+                        body: Padding(
+                          padding: const EdgeInsets.symmetric(
                             horizontal: 16,
                             vertical: 64,
                           ),
-                          child: SettingsPage(),
+                          child: settingsView,
                         ),
                       ),
                     ),
@@ -47,7 +53,7 @@ class ControlButtons extends StatelessWidget {
                 } else {
                   SideSheet.end(
                     title: 'Settings',
-                    body: const SettingsPage(),
+                    body: settingsView,
                     context: context,
                     backgroundColor: pomoCubit.backgroundColor,
                     textColor: pomoCubit.textColor,

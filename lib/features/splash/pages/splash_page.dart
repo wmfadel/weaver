@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pomo/core/constants/colors.dart';
 import 'package:pomo/core/constants/images.dart';
 import 'package:pomo/core/widgets/PoImage.dart';
+import 'package:pomo/features/home/controllers/pomo_cubit.dart';
 import 'package:pomo/features/home/pages/home_page.dart';
 import 'package:pomo/features/splash/controllers/splash_cubit.dart';
 
@@ -19,6 +20,7 @@ class _SplashPageState extends State<SplashPage> {
     return BlocListener<SplashCubit, SplashState>(
       listener: (context, state) {
         if (state is SplashCompleted) {
+          context.read<PomoCubit>().settings = state.settings;
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const HomePage()),
           );

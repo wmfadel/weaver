@@ -10,9 +10,13 @@ import 'package:pomo/core/utils/logger.dart';
 part 'settings_state.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
-  SettingsCubit(this.settings) : super(SettingsInitial());
+  SettingsCubit(Settings settings)
+      : _settings = settings,
+        super(SettingsInitial());
 
-  Settings settings;
+  Settings _settings;
+
+  Settings get settings => _settings;
 
   /// Takes any value available in the [Settings] class and updates it.
   void updateSettings({
@@ -24,7 +28,7 @@ class SettingsCubit extends Cubit<SettingsState> {
     bool? enableNotifications,
     bool? enableSounds,
   }) {
-    settings = settings.copyWith(
+    _settings = _settings.copyWith(
       focusLength: focusLength,
       shortBreakLength: shortBreakLength,
       longBreakLength: longBreakLength,
@@ -33,15 +37,21 @@ class SettingsCubit extends Cubit<SettingsState> {
       enableNotifications: enableNotifications,
       enableSounds: enableSounds,
     );
-    _persistSettings(settings);
-    emit(SettingsUpdate(settings));
+    _persistSettings(_settings);
+    emit(SettingsUpdate(_settings));
   }
 
-  _persistSettings(Settings settings)async{
-    try{
+  _persistSettings(Settings settings) async {
+    try {
       const storage = FlutterSecureStorage();
-      storage.write(key: AppStrings.settingsKey, value: jsonEncode(settings.toJson()));
-    }catch(e){
+      storage.write(
+          key: AppStrings.settingsKey, value: jsonEncode(settings.toJson()));
+
+      String? value = await storage.read(key: AppStrings.settingsKey);
+      Settings? temp;
+      if (value != null) temp = Settings.fromJson(jsonDecode(value));
+      AppLog.v(temp);
+    } catch (e) {
       AppLog.e("failed to update settings $e");
     }
   }

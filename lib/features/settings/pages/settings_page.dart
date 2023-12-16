@@ -46,12 +46,12 @@ class SettingsPage extends StatelessWidget {
               title: 'Pomodoros until long break',
               onIncrement: () {
                 settingsCubit.updateSettings(
-                  pomosCount: settingsCubit.settings.pomosCount + 1,
+                  pomosCount: min(10, settingsCubit.settings.pomosCount + 1),
                 );
               },
               onDecrement: () {
                 settingsCubit.updateSettings(
-                  pomosCount: min(1, settingsCubit.settings.pomosCount - 1),
+                  pomosCount: max(1, settingsCubit.settings.pomosCount - 1),
                 );
               },
               backgroundColor: pomoCubit.backgroundColor,

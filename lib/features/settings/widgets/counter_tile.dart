@@ -16,8 +16,7 @@ class CounterTile extends StatelessWidget {
       required this.onDecrement,
       required this.backgroundColor,
       required this.textColor,
-      Key? key})
-      : super(key: key);
+      super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +69,6 @@ class CounterTile extends StatelessWidget {
             ),
           ),
         ),
-        // const SizedBox(width: 16),
       ],
     );
   }
