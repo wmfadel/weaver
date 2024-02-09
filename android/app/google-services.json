@@ -40,6 +40,78 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:362867090129:android:9c85f37870310accf01bf0",
+        "android_client_info": {
+          "package_name": "com.example.weaver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "362867090129-sbllptkcev7ndk1kupeksfq2qi1nmls3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAURLoi9yktU6ywtOClCfQfaHsnBcc7q78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "362867090129-sbllptkcev7ndk1kupeksfq2qi1nmls3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "362867090129-26kq0m4mrfp3f5mgj2if814qp9jgidum.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pomo"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:362867090129:android:ba008ff737f0fcb8f01bf0",
+        "android_client_info": {
+          "package_name": "com.weaver.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "362867090129-sbllptkcev7ndk1kupeksfq2qi1nmls3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAURLoi9yktU6ywtOClCfQfaHsnBcc7q78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "362867090129-sbllptkcev7ndk1kupeksfq2qi1nmls3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "362867090129-26kq0m4mrfp3f5mgj2if814qp9jgidum.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pomo"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

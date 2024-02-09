@@ -35,7 +35,7 @@ class ControlButtons extends StatelessWidget {
                   create: (_) => cubit,
                   child: const SettingsPage(),
                 );
-                if (Platform.isAndroid) {
+                if (Platform.isAndroid || Platform.isIOS) {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (_) => Scaffold(
