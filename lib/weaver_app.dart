@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pomo/features/splash/controllers/splash_cubit.dart';
-import 'package:pomo/features/splash/pages/splash_page.dart';
+import 'package:weaver/features/pomo/controllers/pomo_cubit.dart';
+import 'package:weaver/features/splash/controllers/splash_cubit.dart';
+import 'package:weaver/features/splash/pages/splash_page.dart';
 
 import 'core/constants/styles.dart';
-import 'features/home/controllers/pomo_cubit.dart';
 
-class PomoApp extends StatefulWidget {
-  const PomoApp({super.key});
+class WeaverApp extends StatefulWidget {
+  const WeaverApp({super.key});
 
   @override
-  State<PomoApp> createState() => _PomoAppState();
+  State<WeaverApp> createState() => _WeaverAppState();
 }
 
-class _PomoAppState extends State<PomoApp> {
+class _WeaverAppState extends State<WeaverApp> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(

@@ -2,14 +2,14 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pomo/core/services/local_notifications.dart';
-import 'package:pomo/features/home/controllers/pomo_cubit.dart';
-import 'package:pomo/features/home/widgets/control_buttons.dart';
-import 'package:pomo/features/home/widgets/counter_text.dart';
-import 'package:pomo/features/home/widgets/state_chips/chipBuilder.dart';
+import 'package:weaver/core/services/local_notifications.dart';
+import 'package:weaver/features/pomo/controllers/pomo_cubit.dart';
+import 'package:weaver/features/pomo/widgets/control_buttons.dart';
+import 'package:weaver/features/pomo/widgets/counter_text.dart';
+import 'package:weaver/features/pomo/widgets/state_chips/chip_builder.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

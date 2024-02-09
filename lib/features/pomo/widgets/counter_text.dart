@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pomo/features/home/controllers/pomo_cubit.dart';
+import 'package:weaver/features/pomo/controllers/pomo_cubit.dart';
 
 class CounterText extends StatelessWidget {
-  const CounterText({Key? key}) : super(key: key);
+  const CounterText({super.key});
 
   @override
   Widget build(BuildContext context) {

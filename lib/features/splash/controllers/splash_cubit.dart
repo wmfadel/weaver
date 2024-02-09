@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
-import 'package:pomo/core/constants/strings.dart';
-import 'package:pomo/core/models/settings.dart';
+import 'package:weaver/core/constants/strings.dart';
+import 'package:weaver/core/models/settings.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:pomo/core/utils/logger.dart';
+import 'package:weaver/core/utils/logger.dart';
 
 part 'splash_state.dart';
 

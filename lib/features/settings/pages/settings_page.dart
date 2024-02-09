@@ -2,9 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pomo/features/home/controllers/pomo_cubit.dart';
-import 'package:pomo/features/settings/controllers/settings_cubit.dart';
-import 'package:pomo/features/settings/widgets/counter_tile.dart';
+import 'package:weaver/features/pomo/controllers/pomo_cubit.dart';
+import 'package:weaver/features/settings/controllers/settings_cubit.dart';
+import 'package:weaver/features/settings/widgets/counter_tile.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});

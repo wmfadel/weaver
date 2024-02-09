@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pomo/core/constants/styles.dart';
+import 'package:weaver/core/constants/styles.dart';
 
 class CounterTile extends StatelessWidget {
   final int counter;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pomo/core/constants/colors.dart';
-import 'package:pomo/core/constants/images.dart';
+import 'package:weaver/core/constants/colors.dart';
+import 'package:weaver/core/constants/images.dart';
 
 /// @ahmdaeyz work
 class SideSheet {

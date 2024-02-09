@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pomo/core/constants/colors.dart';
-import 'package:pomo/core/constants/images.dart';
-import 'package:pomo/core/utils/side_sheet.dart';
-import 'package:pomo/core/widgets/PoImage.dart';
-import 'package:pomo/features/home/controllers/pomo_cubit.dart';
-import 'package:pomo/features/settings/controllers/settings_cubit.dart';
-import 'package:pomo/features/settings/pages/settings_page.dart';
+import 'package:weaver/core/constants/colors.dart';
+import 'package:weaver/core/constants/images.dart';
+import 'package:weaver/core/utils/side_sheet.dart';
+import 'package:weaver/core/widgets/PoImage.dart';
+import 'package:weaver/features/pomo/controllers/pomo_cubit.dart';
+import 'package:weaver/features/settings/controllers/settings_cubit.dart';
+import 'package:weaver/features/settings/pages/settings_page.dart';
 
 class ControlButtons extends StatelessWidget {
   const ControlButtons({super.key});

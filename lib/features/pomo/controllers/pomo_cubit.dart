@@ -3,8 +3,8 @@ import 'dart:ui';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:pomo/core/constants/colors.dart';
-import 'package:pomo/core/models/settings.dart';
+import 'package:weaver/core/constants/colors.dart';
+import 'package:weaver/core/models/settings.dart';
 
 part 'pomo_state.dart';
 

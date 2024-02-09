@@ -1,8 +1,8 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:pomo/core/constants/strings.dart';
 
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
+import 'package:weaver/core/constants/strings.dart';
 
 /// This class is a wrapper around
 /// https://pub.dev/packages/flutter_local_notifications

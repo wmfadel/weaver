@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pomo/core/widgets/PoImage.dart';
+import 'package:weaver/core/widgets/PoImage.dart';
 
 class BaseStateChip extends StatelessWidget {
   final String icon;

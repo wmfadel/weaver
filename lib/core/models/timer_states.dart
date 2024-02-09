@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:pomo/core/constants/colors.dart';
+import 'package:weaver/core/constants/colors.dart';
 
 enum TimerStates {
   focus(AppColors.red900),

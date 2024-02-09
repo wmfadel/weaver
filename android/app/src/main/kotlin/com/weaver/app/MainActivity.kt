@@ -1,4 +1,4 @@
-package com.example.pomo
+package com.weaver.app
 
 import io.flutter.embedding.android.FlutterActivity
 
