@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weaver/core/services/local_notifications.dart';
@@ -8,6 +9,7 @@ import 'package:weaver/features/pomo/widgets/control_buttons.dart';
 import 'package:weaver/features/pomo/widgets/counter_text.dart';
 import 'package:weaver/features/pomo/widgets/state_chips/chip_builder.dart';
 
+@RoutePage()
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 

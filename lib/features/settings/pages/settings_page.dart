@@ -1,11 +1,13 @@
 import 'dart:math';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weaver/features/pomo/controllers/pomo_cubit.dart';
 import 'package:weaver/features/settings/controllers/settings_cubit.dart';
 import 'package:weaver/features/settings/widgets/counter_tile.dart';
 
+@RoutePage()
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weaver/core/constants/colors.dart';
@@ -7,6 +8,7 @@ import 'package:weaver/features/pomo/controllers/pomo_cubit.dart';
 import 'package:weaver/features/pomo/pages/pomo_page.dart';
 import 'package:weaver/features/splash/controllers/splash_cubit.dart';
 
+@RoutePage()
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
 
