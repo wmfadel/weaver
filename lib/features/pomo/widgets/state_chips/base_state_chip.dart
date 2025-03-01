@@ -29,13 +29,13 @@ class BaseStateChip extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          PoImage(icon, color: color, width: 32, height: 32),
+          PoImage(icon, color: color, width: 28, height: 28),
           const SizedBox(width: 8),
           Text(
             label,
             style: Theme.of(context)
                 .textTheme
-                .headlineSmall!
+                .titleLarge!
                 .copyWith(color: color),
           ),
         ],

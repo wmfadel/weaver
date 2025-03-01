@@ -23,14 +23,21 @@ class CounterTile extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(title, style: context.titleMedium.copyWith(color: textColor)),
+        Flexible(
+          child: Text(
+            title,
+            softWrap: true,
+            maxLines: 2,
+            style: context.titleMedium.copyWith(color: textColor),
+          ),
+        ),
         const SizedBox(width: 16),
         Container(
           decoration: BoxDecoration(
             border: Border.all(color: textColor, width: 1),
             borderRadius: BorderRadius.circular(8),
           ),
-          width:  100,
+          width: 100,
           child: IntrinsicHeight(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

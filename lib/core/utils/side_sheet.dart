@@ -110,14 +110,17 @@ class SideSheet {
                               onTap: () {
                                 Navigator.of(context).pop();
                               },
-                              child: Container(
-                                height: 44,
-                                width: 44,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Center(
-                                  child: SvgPicture.asset(Images.close,
-                                      color: textColor, height: 24, width: 24),
+                              child: Semantics(
+                                label: 'Close',
+                                child: Container(
+                                  height: 44,
+                                  width: 44,
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: Center(
+                                    child: SvgPicture.asset(Images.close,
+                                        color: textColor, height: 24, width: 24),
+                                  ),
                                 ),
                               ),
                             ),

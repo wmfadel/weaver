@@ -31,20 +31,20 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_bloc: ^8.1.1
-  bloc: ^8.1.0
+  flutter_bloc: ^9.0.0
+  bloc: ^9.0.0
   equatable: ^2.0.5
-  firebase_core: ^2.4.1
-  firebase_crashlytics: ^3.0.9
+  firebase_core: ^3.12.0
+  firebase_crashlytics: ^4.3.3
 
   flutter_secure_storage: ^9.0.0
-  rxdart: ^0.27.7
+  rxdart: ^0.28.0
   logger: ^2.0.2+1
-  flutter_local_notifications: ^16.2.0
+  flutter_local_notifications: ^18.0.1
   flutter_animate: ^2.0.1
   flutter_svg: ^2.0.9
   cached_network_image: ^3.2.3
-  get_it: ^7.2.0
+  get_it: ^8.0.3
   fall_dialogs:
     git:
       url: https://github.com/wmfadel/fall_dialogs.git
@@ -59,8 +59,8 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.1
-  icons_launcher: ^2.1.6
+  flutter_lints: ^5.0.0
+  icons_launcher: ^3.0.0
   change_app_package_name: ^1.1.0
 
 # For information on the generic Dart part of this file, see the

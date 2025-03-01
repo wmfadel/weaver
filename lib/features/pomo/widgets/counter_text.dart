@@ -12,10 +12,11 @@ class CounterText extends StatelessWidget {
     return BlocBuilder<PomoCubit, PomoState>(builder: (context, state) {
       final TextStyle? textStyle =
           Theme.of(context).textTheme.displayLarge?.copyWith(
-                fontSize: 256,
-                color: pomoCubit.textColor,
-                fontWeight: state.playing ? FontWeight.w700 : FontWeight.w400,
-              );
+        fontSize: 180,
+        color: pomoCubit.textColor,
+        fontWeight: state.playing ? FontWeight.w700 : FontWeight.w400,
+        fontFeatures: [FontFeature.tabularFigures()],
+      );
       return Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,

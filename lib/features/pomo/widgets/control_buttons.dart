@@ -25,10 +25,11 @@ class ControlButtons extends StatelessWidget {
           children: [
             _ControlButton(
               icon: Images.more,
+              semanticsLabel: 'More',
               color: _secondaryColor(state),
               iconColor: _iconsColor(state),
-              width: 80,
-              height: 80,
+              width: 64,
+              height: 64,
               onPressed: () {
                 final SettingsCubit cubit = SettingsCubit(pomoCubit.settings);
                 final settingsView = BlocProvider(
@@ -64,19 +65,21 @@ class ControlButtons extends StatelessWidget {
             const SizedBox(width: 16),
             _ControlButton(
               icon: pomoCubit.isPlaying ? Images.pause : Images.play,
+              semanticsLabel: 'Play/Pause',
               color: _primaryColor(state),
               iconColor: _iconsColor(state),
-              width: 128,
-              height: 96,
+              width: 110,
+              height: 80,
               onPressed: () => pomoCubit.toggle(),
             ),
             const SizedBox(width: 16),
             _ControlButton(
               icon: Images.skip,
+              semanticsLabel: 'Skip',
               color: _secondaryColor(state),
               iconColor: _iconsColor(state),
-              width: 80,
-              height: 80,
+              width: 64,
+              height: 64,
               onPressed: () => pomoCubit.skip(),
             ),
           ],
@@ -117,6 +120,7 @@ class _ControlButton extends StatelessWidget {
   final double width;
   final double height;
   final VoidCallback onPressed;
+  final String semanticsLabel;
 
   const _ControlButton({
     required this.color,
@@ -125,6 +129,7 @@ class _ControlButton extends StatelessWidget {
     required this.width,
     required this.height,
     required this.onPressed,
+   required this.semanticsLabel,
   });
 
   @override
@@ -133,21 +138,24 @@ class _ControlButton extends StatelessWidget {
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
         onTap: onPressed,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          width: width,
-          height: height,
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(24),
-          ),
-          padding: const EdgeInsets.all(8),
-          child: Center(
-            child: PoImage(
-              icon,
-              color: iconColor,
-              width: 32,
-              height: 32,
+        child: Semantics(
+          label: semanticsLabel,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            width: width,
+            height: height,
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.circular(24),
+            ),
+            padding: const EdgeInsets.all(8),
+            child: Center(
+              child: PoImage(
+                icon,
+                color: iconColor,
+                width: 24,
+                height: 24,
+              ),
             ),
           ),
         ),

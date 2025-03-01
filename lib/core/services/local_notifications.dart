@@ -13,14 +13,14 @@ import 'package:weaver/core/constants/strings.dart';
 ///
 class NotificationsHelper {
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-  FlutterLocalNotificationsPlugin();
+      FlutterLocalNotificationsPlugin();
   late final DarwinInitializationSettings initializationSettingsDarwin;
   late final AndroidInitializationSettings initializationSettingsAndroid;
 
   /// initializing package requirements in constructor
   NotificationsHelper() {
     initializationSettingsAndroid =
-    const AndroidInitializationSettings('@drawable/ic_launcher');
+        const AndroidInitializationSettings('@drawable/ic_launcher');
     initializationSettingsDarwin = const DarwinInitializationSettings();
 
     final initializationSettings = InitializationSettings(
@@ -90,13 +90,13 @@ class NotificationsHelper {
   }) async {
     tz.initializeTimeZones();
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
-    AndroidNotificationDetails(
+        AndroidNotificationDetails(
       AppStrings.notificationsChannelId,
       AppStrings.notificationsChannelName,
       channelDescription: AppStrings.notificationsChannelDescription,
     );
     const iOSPlatformChannelSpecifics =
-    DarwinNotificationDetails(presentSound: true);
+        DarwinNotificationDetails(presentSound: true);
     const NotificationDetails platformChannelSpecifics = NotificationDetails(
       android: androidPlatformChannelSpecifics,
       iOS: iOSPlatformChannelSpecifics,
@@ -109,9 +109,9 @@ class NotificationsHelper {
       tz.TZDateTime.now(tz.local).add(duration),
       platformChannelSpecifics,
       payload: payload,
-      androidAllowWhileIdle: true,
       uiLocalNotificationDateInterpretation:
-      UILocalNotificationDateInterpretation.absoluteTime,
+          UILocalNotificationDateInterpretation.absoluteTime,
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
     );
   }
 
@@ -131,7 +131,7 @@ class NotificationsHelper {
       channelDescription: AppStrings.notificationsChannelDescription,
     );
     var iOSPlatformChannelSpecifics =
-    const DarwinNotificationDetails(presentSound: true);
+        const DarwinNotificationDetails(presentSound: true);
     var platformChannelSpecifics = NotificationDetails(
       android: androidPlatformChannelSpecifics,
       iOS: iOSPlatformChannelSpecifics,
@@ -143,6 +143,7 @@ class NotificationsHelper {
       body,
       repeatInterval,
       platformChannelSpecifics,
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
     );
   }
 

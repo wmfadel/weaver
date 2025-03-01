@@ -28,16 +28,17 @@ class HomePage extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: pomoCubit.backgroundColor,
-          body: const Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            // mainAxisSize: MainAxisSize.min,
-            children: [
-              SizedBox(height: 32, width: double.maxFinite),
-              ChipBuilder(),
-              CounterText(),
-              ControlButtons(),
-              SizedBox(height: 32),
-            ],
+          body: Center(
+            child: const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              // mainAxisSize: MainAxisSize.min,
+              children: [
+                ChipBuilder(),
+                CounterText(),
+                ControlButtons(),
+
+              ],
+            ),
           ),
         );
       },
